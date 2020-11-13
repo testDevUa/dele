@@ -1,0 +1,56 @@
+.cars__item {
+    
+}
+
+.car__bg {
+    width: 100%;
+    height: calc(100vw * 0.09625);
+    background-color: #e0e0e0;
+}
+
+.car__image {
+    display: block;
+    width: inherit;
+    height: inherit;
+
+}
+
+.car__top {
+    margin-top: 24px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.car__title {
+    font-size: 20px;
+}
+
+.car__top-reviews {
+    color: #a8a8a8;
+}
+
+.car__top-reviews span {
+    color: #1d1d1f;
+    font-weight: 500;
+}
+
+.car__btn {
+    cursor: pointer;
+    display: block;
+    margin-top: 24px;
+    width: 100%;
+    padding: 10px 16px;
+    outline: 0;
+    border: 1px solid #cecece;
+    border-radius: 3px;
+    background-color: #fff;
+    font-size: 14px;
+    font-weight: 550;
+    transition: all .15s linear;
+}
+
+.car__btn:hover {
+    background-color: #1d1d1f;
+    color: #fff;
+}

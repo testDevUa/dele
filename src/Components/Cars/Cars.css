@@ -1,0 +1,36 @@
+.cars {
+    padding: 40px 0;
+}
+
+.cars__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 30px;
+    margin-top: 32px;
+    /* padding: 5px; */
+}
+
+.cars__form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 30px;
+}
+
+.cars__input {
+    padding: 10px 14px;
+    border: 1px solid rgb(219, 219, 219);
+    outline: 0;
+}
+
+.cars__add {
+    cursor: pointer;
+    display: block;
+    margin: 24px auto 0 auto;
+    background-color: #1d1d1f;
+    color: #fff;
+    font-weight: 600;
+    border: 0;
+    border-radius: 3px;
+    outline: 0;
+    padding: 12px 20px;
+}
