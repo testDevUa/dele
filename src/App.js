@@ -5,6 +5,7 @@ import Messenger from './Components/Messenger/Messenger';
 import Header from './Components/Header/Header';
 import CarsContainer from './Components/Cars/CarsContainer';
 import UsersContainer from './Components/Users/UsersContainer';
+import AboutContainer from './Components/About/AboutContainer';
 
 function App(props) {
 
@@ -15,6 +16,7 @@ function App(props) {
         <Route path='/Catalog' render={() => <CarsContainer  />} />
         <Route path='/Messenger' render={() => <Messenger />} />
         <Route path='/Users' render={() => <UsersContainer />} />
+        <Route path='/About' render={() => <AboutContainer /> } />
       </div>
     </div>
   );

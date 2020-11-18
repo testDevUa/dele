@@ -6,6 +6,7 @@ const Header = () => {
     return (
         <div className='header'>
             <nav className='nav'>
+                <NavLink className='nav__item' to='/About'>О нас</NavLink>
                 <NavLink className='nav__item' to='/Messenger'>Мессенджер</NavLink>
                 <NavLink className='nav__item' to='/Users'>Пользователи</NavLink>
                 <NavLink className='nav__item' to='/Catalog'>Каталог автомобилей</NavLink>

@@ -3,25 +3,24 @@ import React from 'react';
 import User from './User/User';
 import './Users.css'
 
-const Users = (props) => {
+class Users extends React.Component {
 
-    if (props.users.length === 0) {
-
-        Axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-
+    componentDidMount() {
+        Axios.get("https://social-network.samuraijs.com/api/1.0/users?page=1&count=20").then(response => {
             console.log(response);
-
-            props.setUsers(response.data.items);
+            this.props.setUsers(response.data.items);
         })
     }
 
-    let allUsers = props.users.map(elem => <User toggleFollow={props.toggleFollow} key={elem.id} id={elem.id} name={elem.name} followed={elem.followed} />)
-
-    return (
-        <div className='users'>
-            {allUsers}
-        </div>
-    )
+    render() {
+        let allUsers = this.props.users.map(elem => <User toggleFollow={this.props.toggleFollow} key={elem.id} id={elem.id} name={elem.name} followed={elem.followed} />);
+        return (
+            <div className='users'>
+                {allUsers}
+            </div>
+        )
+    }
 }
+
 
 export default Users;
