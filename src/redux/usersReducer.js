@@ -3,7 +3,9 @@
 //         { id: 3, fullName: 'Anastasiya Madyar', followed: false, car: 'Mazda 3', location: { country: 'Ukraine', city: 'Kyiv' } }
 
 let initialState = {
-    users: []
+    users: [],
+    usersOnPage: 10,
+    pageNumber: 1
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -24,11 +26,22 @@ const usersReducer = (state = initialState, action) => {
             return {...state, users: [...action.users]}
         }
 
+        case 'SET_TOTAL_USERS' : {
+            return {...state, totalCountUsers: action.count, pagesCount: Math.ceil(action.count / state.usersOnPage)}
+        }
+
+        case 'SET_PAGE' : {
+            return {...state, pageNumber: action.page}
+        }
+
         default: return state;
     }
 }
 
 export const toggleFolllowAC = (id) => ({ type: 'TOGGLE-FOLLOW', id })
 export const setUsersAC = (users) => ({ type: 'SET_USERS', users })
+
+export const setTotalUsersAC = (count) => ({type: 'SET_TOTAL_USERS', count});
+export const setPageAC = (page) => ({type: 'SET_PAGE', page});
 
 export default usersReducer;

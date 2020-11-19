@@ -1,3 +1,28 @@
 .users {
     padding: 40px 0;
 }
+
+.paginator {
+    display: flex;
+    justify-content: center;
+}
+
+.paginator__item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-right: 24px;
+    background-color: #fff;
+    color: #1d1d1f;
+    border-radius: 50%;
+    border: 1px solid #1d1d1f;
+    line-height: 1;
+}
+
+.paginator__item.active {
+    background-color: #1d1d1f;
+    color: #fff;
+}
