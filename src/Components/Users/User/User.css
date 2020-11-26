@@ -25,10 +25,19 @@
     padding-left: 24px;
 }
 
+.user__info a {
+    text-decoration: none;
+}
+
 .user__fullname {
     font-size: 20px;
     font-weight: 500;
     color: #1d1d1f;
+    transition: all .2s linear;
+}
+
+.user__fullname:hover {
+    color: #757575;
 }
 
 .user__car {

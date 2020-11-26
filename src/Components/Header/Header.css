@@ -34,3 +34,20 @@
 .nav__item:nth-last-of-type(4) {
     margin-right: 0;
 }
+
+.nav__login a {
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    text-decoration: none;
+    color: #1d1d1f;
+}
+
+.nav__login-icon {
+    font-size: 20px;
+    color: ;
+}
+
+.nav__login-login {
+    margin-left: 8px;
+}

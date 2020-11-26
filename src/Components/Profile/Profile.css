@@ -1,0 +1,13 @@
+.profile {
+    padding: 48px 0;
+}
+
+.profile__name {
+    margin-top: 16px;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.profile__about {
+    margin-top: 12px;
+}

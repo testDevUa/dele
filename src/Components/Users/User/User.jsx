@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './User.css'
 
 const User = (props) => {
@@ -16,7 +17,9 @@ const User = (props) => {
                         {/* <img src={props.image} /> */}
                     </div>
                     <div className='user__info'>
-                        <div className='user__fullname'>{props.name}</div>
+                        <NavLink to={'/Profile/' + props.id}>
+                            <div className='user__fullname'>{props.name}</div>
+                        </NavLink>
                         <div className='user__car'></div>
                     </div>
                 </div>

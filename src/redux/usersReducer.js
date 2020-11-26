@@ -5,7 +5,8 @@
 let initialState = {
     users: [],
     usersOnPage: 10,
-    pageNumber: 1
+    pageNumber: 1,
+    isFetching: false
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -34,14 +35,19 @@ const usersReducer = (state = initialState, action) => {
             return {...state, pageNumber: action.page}
         }
 
+        case 'TOGGLE_FETCHING' : {
+            return {...state, isFetching: action.param }
+        }
+
         default: return state;
     }
 }
 
-export const toggleFolllowAC = (id) => ({ type: 'TOGGLE-FOLLOW', id })
-export const setUsersAC = (users) => ({ type: 'SET_USERS', users })
+export const toggleFolllow = (id) => ({ type: 'TOGGLE-FOLLOW', id })
+export const setUsers = (users) => ({ type: 'SET_USERS', users })
 
-export const setTotalUsersAC = (count) => ({type: 'SET_TOTAL_USERS', count});
-export const setPageAC = (page) => ({type: 'SET_PAGE', page});
+export const setTotalUsers = (count) => ({type: 'SET_TOTAL_USERS', count});
+export const setPage = (page) => ({type: 'SET_PAGE', page});
+export const toggleIsFetching = (param) => ({type: 'TOGGLE_FETCHING', param});
 
 export default usersReducer;
