@@ -1,13 +1,10 @@
+import Axios from 'axios';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { usersAPI } from '../../../api/api';
 import './User.css'
 
 const User = (props) => {
-
-    let toggleFollowing = () => {
-        let id = props.id;
-        props.toggleFollow(id);
-    }
 
     return (
         <div className='user'>
@@ -28,7 +25,21 @@ const User = (props) => {
                         <div className='user__country'></div>
                         <div className='user__city'></div>
                     </div>
-                    {props.followed ? <button className='user__follow' onClick={toggleFollowing}>Follow</button> : <button className='user__unfollow' onClick={toggleFollowing}>Unfollow</button>}
+                    {props.followed ? <button className='user__unfollow' onClick={() => {
+                        usersAPI.unfollowUser(props.id).then(data => {
+                            if (data.resultCode == 0) {
+                                props.toggleFollow(props.id);
+                            }
+
+                        })
+                    }}>Unfollow</button> : <button className='user__follow' onClick={() => {
+                        usersAPI.followUser(props.id).then(data => {
+                            if (data.resultCode == 0) {
+                                props.toggleFollow(props.id);
+                            }
+
+                        })
+                    }}>Follow</button>}
                 </div>
             </div>
         </div>
