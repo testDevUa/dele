@@ -1,7 +1,8 @@
 import React from 'react';
 import './Messenger.css';
 
-const Messenger = () => {
+const Messenger = (props) => {
+
     return(
         <div>
             Messages

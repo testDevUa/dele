@@ -1,38 +1,27 @@
 import React from 'react';
 import Axios from 'axios';
 import { connect } from 'react-redux';
-import { toggleFolllow, setUsers, setTotalUsers, setPage, toggleIsFetching } from '../../redux/usersReducer';
+import { setUsers, setTotalUsers, setPage, toggleIsFetching, getUsers, setAllUsers, followUser, unfollowUser } from '../../redux/usersReducer';
 import Users from './Users';
 import Preloader from '../../Components/Preloader/Preloader';
-import { usersAPI } from '../../api/api';
 
 class UsersAPIContainer extends React.Component {
 
 
     componentDidMount() {
-        this.props.toggleIsFetching(true);
-        usersAPI.getUsers(this.props.pageNumber).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(data.items);
-            this.props.setTotalUsers(data.totalCount);
-        })
+        this.props.getUsers(this.props.pageNumber)
     }
     setPageNumber = (page) => {
-        this.props.toggleIsFetching(true);
-        this.props.setPage(page);
-        usersAPI.getUsers(this.props.pageNumber).then(data => {
-            this.props.toggleIsFetching(false);
-            this.props.setUsers(data.items);
-            this.props.setTotalUsers(data.totalCount);
-        })
+        this.props.setAllUsers(page)
     }
+    
 
     render() {
 
         return (
             <>
                 {this.props.isFetching ? <Preloader /> : null}
-                <Users isFetching={toggleIsFetching} pageNumber={this.props.pageNumber} users={this.props.users} toggleFollow={this.props.toggleFolllow} pagesCount={this.props.pagesCount} setPageNumber={this.setPageNumber} />
+                <Users isFetching={toggleIsFetching} pageNumber={this.props.pageNumber} users={this.props.users} followUser={this.props.followUser} unfollowUser={this.props.unfollowUser} pagesCount={this.props.pagesCount} setPageNumber={this.setPageNumber} />
             </>
         )
     }
@@ -44,7 +33,7 @@ let mapStateToProps = (state) => {
 
 const UsersContainer = connect(mapStateToProps,
     {
-        toggleFolllow, setUsers, setTotalUsers, setPage, toggleIsFetching
+        setUsers, setTotalUsers, setPage, toggleIsFetching, getUsers, setAllUsers, followUser, unfollowUser
 
     }
 )(UsersAPIContainer);

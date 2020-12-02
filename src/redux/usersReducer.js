@@ -1,6 +1,7 @@
 // { id: 1, fullName: 'Dmytro Pryshliak', followed: false, car: 'Mazda 3', location: { country: 'Ukraine', city: 'Kyiv' } },
 //         { id: 2, fullName: 'Volodymyr Pryshliak', followed: false, car: 'Daewoo Lanos', location: { country: 'Ukraine', city: 'Bilohorodka' } },
 //         { id: 3, fullName: 'Anastasiya Madyar', followed: false, car: 'Mazda 3', location: { country: 'Ukraine', city: 'Kyiv' } }
+import { usersAPI } from '../api/api';
 
 let initialState = {
     users: [],
@@ -49,5 +50,52 @@ export const setUsers = (users) => ({ type: 'SET_USERS', users })
 export const setTotalUsers = (count) => ({type: 'SET_TOTAL_USERS', count});
 export const setPage = (page) => ({type: 'SET_PAGE', page});
 export const toggleIsFetching = (param) => ({type: 'TOGGLE_FETCHING', param});
+
+export const getUsers = (pageNumber) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        usersAPI.getUsers(pageNumber).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsers(data.totalCount));
+        })
+    }
+}
+
+export const setAllUsers = (page) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        dispatch(setPage(page))
+        usersAPI.getUsers(page).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsers(data.totalCount));
+        })
+    }
+}
+
+export const followUser = (id) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        usersAPI.followUser(id).then(data => {
+            dispatch(toggleIsFetching(false));
+            if (data.resultCode == 0) {
+                dispatch(toggleFolllow(id));
+            }
+        })
+    }
+}
+
+export const unfollowUser = (id) => {
+    return (dispatch) => {
+        dispatch(toggleIsFetching(true));
+        usersAPI.unfollowUser(id).then(data => {
+            dispatch(toggleIsFetching(false));
+            if (data.resultCode == 0) {
+                dispatch(toggleFolllow(id));
+            }
+        })
+    }
+}
 
 export default usersReducer;
