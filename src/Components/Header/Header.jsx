@@ -1,4 +1,4 @@
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
@@ -25,8 +25,8 @@ const Header = (props) => {
                 <nav className='nav'>
                     <div className='nav__login'>
                         <NavLink to={'/Profile'}>
-                            <FontAwesomeIcon className='nav__login-icon' icon={faUserCircle} />
                             <div className='nav__login-login'>{props.login}</div>
+                            <FontAwesomeIcon onClick={() => {props.LogoutThunk()}} className='nav__login-icon' icon={faSignOutAlt} />
                         </NavLink>
                     </div>
                     <NavLink className='nav__item' to='/About'>О нас</NavLink>

@@ -1,0 +1,23 @@
+.login {
+    padding-top: 48px;
+}
+
+.form__item {
+    padding: ;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.form__item input {
+    padding: 0;
+    margin: 0;
+}
+
+.form__item label {
+    margin-left: 8px;
+}
+
+.form__btn {
+    margin-top: 16px;
+}

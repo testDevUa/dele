@@ -1,5 +1,6 @@
 import React from 'react';
 import './Profile.css';
+import ProfileStatus from './ProfileStatus';
 
 const Profile = (props) => {
 
@@ -19,6 +20,7 @@ const Profile = (props) => {
                 <img className='profile__image' src={props.profile.photos.small}></img>
                 <div className='profile__name'>{styleName(props.profile.fullName)}</div>
                 <div className='profile__about'>{props.profile.aboutMe}</div>
+                <ProfileStatus status={props.status} updateStatus={props.setStatus} />
             </div>
         )
     }

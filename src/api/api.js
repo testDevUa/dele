@@ -8,6 +8,18 @@ const instance = Axios.create({
     }
 })
 
+export const profileAPI = {
+    getStatus(userId) {
+        return instance.get(`profile/status/${userId}`).then(response => response.data);
+    }, 
+    getUser(userId) {
+        return instance.get(`profile/${userId}`).then(response => response.data);
+    },
+    setStatus(status) {
+        return instance.put(`profile/status`, {status: status}).then(response => console.log(response));
+    }
+}
+
 export const usersAPI = {
     getUsers(pageNumber) {
         return instance.get(`users?page=${pageNumber}&count=10`).then(response => response.data)
@@ -17,5 +29,17 @@ export const usersAPI = {
     },
     unfollowUser (id) {
         return instance.delete(`follow/${id}`).then(response => response.data)
+    }
+}
+
+export const authAPI = {
+    me() {
+        return instance.get('auth/me').then(response => response.data);
+    },
+    login(email, password, rememberMe = true) {
+        return instance.post('auth/login', {email, password, rememberMe}).then(response => response.data);
+    },
+    logout() {
+        return instance.delete('auth/login').then(response => response.data);
     }
 }
