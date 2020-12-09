@@ -1,7 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateImageAC, updateMakeAC, updateModelAC, addCarAC } from '../../redux/catalogReducer';
+import { updateImage, updateMake, updateModel, addCar } from '../../redux/catalogReducer';
 import Cars from './Cars';
+
+class CarsContainer extends React.Component {
+    render() {
+        return(
+            <Cars {...this.props} />
+        )
+    }
+}
 
 let mapStateToProps = (state) => {
     return {
@@ -9,24 +17,9 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        updateMake: (text) => {
-            dispatch(updateMakeAC(text))
-        },
-        updateModel: (text) => {
-            dispatch(updateModelAC(text))
-        },
-        updateImage: (text) => {
-            dispatch(updateImageAC(text))
-        },
-        addCar: () => {
-            dispatch(addCarAC())
-        }
-    }
-    
-}
-
-const CarsContainer = connect(mapStateToProps, mapDispatchToProps)(Cars)
-
-export default CarsContainer;
+export default connect(mapStateToProps, {
+    updateMake,
+    updateModel,
+    updateImage,
+    addCar
+})(CarsContainer);

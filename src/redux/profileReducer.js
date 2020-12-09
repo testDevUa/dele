@@ -41,6 +41,7 @@ export const getStatus = (userId) => {
     return (dispatch) => {
         profileAPI.getStatus(userId).then(data => {
             dispatch(setUserStatus(data))
+            debugger;
         })
     }
 }

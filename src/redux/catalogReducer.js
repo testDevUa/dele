@@ -44,9 +44,9 @@ const catalogReducer = (state = initialState, action) => {
     }
 }
 
-export const updateMakeAC = (text) => ({type: 'UPDATE-MAKE', make: text});
-export const updateModelAC = (text) => ({type: 'UPDATE-MODEL', model: text});
-export const updateImageAC = (text) => ({type: 'UPDATE-IMAGE', image: text});
-export const addCarAC = () => ({type: 'ADD-CAR'});
+export const updateMake = (text) => ({type: 'UPDATE-MAKE', make: text});
+export const updateModel = (text) => ({type: 'UPDATE-MODEL', model: text});
+export const updateImage = (text) => ({type: 'UPDATE-IMAGE', image: text});
+export const addCar = () => ({type: 'ADD-CAR'});
 
 export default catalogReducer;
