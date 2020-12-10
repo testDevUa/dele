@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 const Header = (props) => {
-    if (!props.id) {
+    if (!props.getUserId) {
         return (
             <div className='header'>
                 <nav className='nav'>
@@ -25,7 +25,7 @@ const Header = (props) => {
                 <nav className='nav'>
                     <div className='nav__login'>
                         <NavLink to={'/Profile'}>
-                            <div className='nav__login-login'>{props.login}</div>
+                            <div className='nav__login-login'>{props.getUserLogin}</div>
                             <FontAwesomeIcon onClick={() => {props.LogoutThunk()}} className='nav__login-icon' icon={faSignOutAlt} />
                         </NavLink>
                     </div>
